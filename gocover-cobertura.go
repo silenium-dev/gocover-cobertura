@@ -170,10 +170,12 @@ func (cov *Coverage) parseProfile(profile *Profile, pkgPkg *packages.Package, ig
 	fset := token.NewFileSet()
 	parsed, err := parser.ParseFile(fset, absFilePath, nil, 0)
 	if err != nil {
+		fmt.Printf("Failed to parse file %s: %s\n", absFilePath, err)
 		return err
 	}
 	data, err := os.ReadFile(absFilePath)
 	if err != nil {
+		fmt.Printf("Failed to read file %s: %s\n", absFilePath, err)
 		return err
 	}
 
